@@ -1,0 +1,11 @@
+COMANDOS AYUDA DOCKER.
+
+  Montar imagen MySQL
+  
+  docker run -d --name MySQLDevLMM -p 0.0.0.0:3307:3306 -e MYSQL_ALLOW_EMPTY_PASSWORD=1 mysql:latest
+
+  Comando para generar la imagen a partir del dockerfile:
+  docker build -t newbackend_playlistservice -f Dockerfile .
+
+  Comando para generar el contenedor de esa imagen:
+  docker run -d --name newbackend_playlistservice_container --mount type=bind,source=C:\Iconmm,target=/mnt -e ASPNETCORE_URLS=http://+:5000 -p 8000:5000 --link MySQLDevLMM newbackend_playlistservice:latest
